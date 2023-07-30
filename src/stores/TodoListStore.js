@@ -22,7 +22,14 @@ export const useTodoListStore=defineStore('todoList',{
                 return todo.id !== id
             }
            )
-        }
+        },
+        toggleCompleted(idToFind) {
+            const todo = this.todoList.find((obj) => obj.id === idToFind);
+            if (todo) {
+                todo.completed = !todo.completed;
+            }
+        },
+
     }
 
 
