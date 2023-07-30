@@ -4,8 +4,26 @@ import {defineStore} from "pinia";
 export const useTodoListStore=defineStore('todoList',{
     //STATE
     state:() => ({
-        todoList:[]
-    })
+        todoList:[],
+        id:0
+    }),
+    actions:{
+        addItem(item)
+        {
+            this.todoList.push({
+                item:item,
+                id:this.id++,
+                completed:false
+            })
+        },
+        deleteItem(id)
+        {
+            this.todoList=this.todoList.filter((todo)=>{
+                return todo.id !== id
+            }
+           )
+        }
+    }
 
 
     /*
